@@ -1,1 +1,1 @@
-export * from './tedin'
+export * from './example'

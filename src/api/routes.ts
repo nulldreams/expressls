@@ -1,10 +1,12 @@
-import { tedinRouter } from '@/api/routers'
-import { Express } from 'express'
+import { ErrorHandler } from '@/api/errors'
+import { handleError } from '@/api/middlewares'
+import { exampleRouter } from '@/api/routers'
+import { Express, NextFunction, Request, Response } from 'express'
 
 export default (app: Express): void => {
-  app.use('/tedin', tedinRouter)
+  app.use('/example', exampleRouter)
 
-  app.use((_, res, _2) => {
-    res.status(404).json({ error: 'NOT FOUND' })
+  app.use((err: ErrorHandler, _: Request, res: Response, next: NextFunction) => {
+    handleError(err, res, next)
   })
 }
