@@ -1,1 +1,1 @@
-# serverless-api-template
+# Serverless + Express + Typescript
